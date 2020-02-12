@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import FormFields from './FormFields'
+import { connect } from 'react-redux'
+import { getCountries } from '../redux/actions'
 
 class Form extends Component {
+  state = {}
+
+  componentDidMount() {
+    this.props.getCountries()
+  }
+  
   render() {
     return (
       <>
@@ -11,4 +19,4 @@ class Form extends Component {
   }
 }
 
-export default Form
+export default connect({ getCountries })(Form)
