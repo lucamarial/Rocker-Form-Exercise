@@ -1,18 +1,8 @@
-import { COUNTRIES_LOADED } from '../constants'
+import { combineReducers } from 'redux'
+import countryReducer from './countryReducer'
 
-const initialState = {
-  remoteCountries: []
-}
-
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case COUNTRIES_LOADED:
-      return Object.assign({}, state, {
-        remoteCountries: state.remoteCountries.concat(action.payload)
-      })
-    default:
-      return state
-  }
-}
+const rootReducer = combineReducers({
+  countryReducer: countryReducer
+})
 
 export default rootReducer
