@@ -20,7 +20,7 @@ class Form extends Component {
   }
 
   componentDidMount() {
-    this.props.getCountries()
+    this.props.remoteCountries.length > 0 || this.props.getCountries()
 
     try {
       let userData = JSON.parse(localStorage.getItem('user'))
