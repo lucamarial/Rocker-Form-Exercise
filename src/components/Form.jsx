@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import FormFields from './FormFields'
 import { connect } from 'react-redux'
-import { getCountries } from '../redux/actions'
+import { getCountries, confirmUser } from '../redux/actions'
+import { bindActionCreators } from 'redux'
 
 class Form extends Component {
   state = {
@@ -75,6 +76,12 @@ class Form extends Component {
     e.preventDefault()
 
     if(this.validateForm(this.state.errors) && this.state.ssn !== '' && this.state.phone !== '' && this.state.email !== '' && this.state.country !== '') {
+      this.props.dispatch(confirmUser({
+        ssn: this.state.ssn,
+        phone: this.state.phone,
+        email: this.state.email,
+        country: this.state.country
+      }))
       console.log('Success')
     } else {
       this.setState({
@@ -119,4 +126,12 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getCountries })(Form)
+const mapDispatchToProps = dispatch => {
+  let actions = bindActionCreators({ getCountries }, dispatch)
+  return { ...actions, dispatch}
+}
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(Form)
