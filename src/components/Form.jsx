@@ -128,7 +128,7 @@ class Form extends Component {
       email: '',
       country: 'Afghanistan'
     })
-
+    localStorage.clear()
     console.log('Success')
   }
 
