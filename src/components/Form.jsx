@@ -13,7 +13,8 @@ class Form extends Component {
       ssn: '',
       phone: '',
       email: '',
-    }
+    },
+    errorMessage: null
   }
 
   componentDidMount() {
@@ -62,6 +63,27 @@ class Form extends Component {
     })
   }
 
+  validateForm = (errors) => {
+    let valid = true
+    Object.values(errors).forEach(
+      val => val.length > 0 && (valid = false)
+    )
+    return valid
+  }
+
+  handleSubmit = async e => {
+    e.preventDefault()
+
+    if(this.validateForm(this.state.errors) && this.state.ssn !== '' && this.state.phone !== '' && this.state.email !== '' && this.state.country !== '') {
+      console.log('Success')
+    } else {
+      this.setState({
+        errorMessage: 'Please make sure that all fields contain valid information.'
+      })
+      console.log('Oops, something went wrong!')
+    }
+  }
+
   render() {
     let { remoteCountries } = this.props
     let options
@@ -84,6 +106,7 @@ class Form extends Component {
           country = {this.state.country}
           errors = {this.state.errors}
           handleChange = {this.handleChange}
+          handleSubmit = {this.handleSubmit}
         />
       </>
     )

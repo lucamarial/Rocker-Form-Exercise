@@ -7,7 +7,7 @@ const FormFields = props => {
 	return (
 		<>
 			<Container fluid textAlign='center'>
-				<Form>
+				<Form onSubmit={props.handleSubmit}>
 					<Form.Input
 						name='ssn'
 						fluid
