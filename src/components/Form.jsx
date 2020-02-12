@@ -23,6 +23,10 @@ class Form extends Component {
     this.props.getCountries()
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('user', JSON.stringify(nextState))
+  }
+
   validEmail = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
 
   ssnRegex = /^(19|20)?\d{2}((0[1-9])|(1[012]))(([012][1-9])|(3[01]))-\d{4}$/
