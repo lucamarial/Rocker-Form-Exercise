@@ -4,7 +4,17 @@ import { connect } from 'react-redux'
 import { getCountries } from '../redux/actions'
 
 class Form extends Component {
-  state = {}
+  state = {
+    ssn: '',
+    phone: '',
+    email: '',
+    country: 'Afghanistan',
+    errors: {
+      ssn: '',
+      phone: '',
+      email: '',
+    }
+  }
 
   componentDidMount() {
     this.props.getCountries()
@@ -26,6 +36,10 @@ class Form extends Component {
       <>
         <FormFields 
           options = {options}
+          ssn = {this.state.ssn}
+          phone = {this.state.phone}
+          email = {this.state.email}
+          country = {this.state.country}
         />
       </>
     )
