@@ -44,7 +44,7 @@ class Form extends Component {
         errors.phone =
           this.validPhone(value)
             ? ''
-            : 'Please enter a valid email address!'
+            : 'Please enter a valid phone number!'
         break
       case 'email':
         errors.email =
@@ -82,6 +82,7 @@ class Form extends Component {
           phone = {this.state.phone}
           email = {this.state.email}
           country = {this.state.country}
+          errors = {this.state.errors}
           handleChange = {this.handleChange}
         />
       </>
