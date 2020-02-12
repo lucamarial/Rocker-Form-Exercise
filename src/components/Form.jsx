@@ -115,7 +115,7 @@ class Form extends Component {
 
 const mapStateToProps = state => {
   return {
-    remoteCountries: state.remoteCountries
+    remoteCountries: state.countryReducer.remoteCountries
   }
 }
 
