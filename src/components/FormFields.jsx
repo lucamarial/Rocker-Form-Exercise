@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Container } from 'semantic-ui-react'
+import { Form, Container, Message } from 'semantic-ui-react'
 
 const FormFields = props => {
 	let { errors } = props
