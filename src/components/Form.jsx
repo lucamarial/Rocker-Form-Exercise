@@ -21,6 +21,30 @@ class Form extends Component {
 
   componentDidMount() {
     this.props.getCountries()
+
+    try {
+      let userData = JSON.parse(localStorage.getItem('user'))
+
+      if (localStorage.getItem('user')) {
+        this.setState({
+          ssn: userData.ssn,
+          phone: userData.phone,
+          email: userData.email,
+          country: userData.country,
+          errors: userData.errors
+        })
+      } else {
+        this.setState({
+          ssn: '',
+          phone: '',
+          email: '',
+          country: 'Afghanistan',
+          errors: {}
+        })
+      }
+    } catch(error) {
+      return console.log(error)
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
