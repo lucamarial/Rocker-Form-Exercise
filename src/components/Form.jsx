@@ -15,7 +15,8 @@ class Form extends Component {
       phone: '',
       email: '',
     },
-    errorMessage: null
+    errorMessage: null,
+    successMessage: null
   }
 
   componentDidMount() {
@@ -124,6 +125,8 @@ class Form extends Component {
           email = {this.state.email}
           country = {this.state.country}
           errors = {this.state.errors}
+          successMessage = {this.state.successMessage}
+          errorMessage = {this.state.errorMessage}  
           handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}
         />

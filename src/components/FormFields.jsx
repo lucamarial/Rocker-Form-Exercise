@@ -3,6 +3,24 @@ import { Form, Container } from 'semantic-ui-react'
 
 const FormFields = props => {
 	let { errors } = props
+	let successMessage, errorMessage
+
+	if(props.successMessage) {
+    successMessage = 
+      <Message 
+        color='green' 
+        content={props.successMessage}
+      />
+  }
+
+  if(props.errorMessage) {
+    errorMessage = 
+      <Message 
+        color='red'
+        content={props.errorMessage}
+        type='promt'
+      />
+  }
 
 	return (
 		<>
@@ -48,6 +66,8 @@ const FormFields = props => {
 					>
             {props.options}
 					</select>
+					{successMessage}
+          {errorMessage}
 					<Form.Button content='Confirm' type='submit' />
 				</Form>
 			</Container>
