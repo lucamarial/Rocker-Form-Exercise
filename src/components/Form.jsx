@@ -82,13 +82,25 @@ class Form extends Component {
         email: this.state.email,
         country: this.state.country
       }))
-      console.log('Success')
+      this.clear()
     } else {
       this.setState({
         errorMessage: 'Please make sure that all fields contain valid information.'
       })
       console.log('Oops, something went wrong!')
     }
+  }
+
+  clear = () => {
+    this.setState({
+      successMessage: 'Success!',
+      ssn: '',
+      phone: '',
+      email: '',
+      country: 'Afghanistan'
+    })
+
+    console.log('Success')
   }
 
   render() {
