@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Container } from 'semantic-ui-react'
 
-const FormFields = () => {
+const FormFields = props => {
 	return (
 		<>
 			<Container fluid textAlign='center'>
@@ -29,6 +29,7 @@ const FormFields = () => {
 						name='country'
 						placeholder='Country'
 					>
+            {props.options}
 					</select>
 					<Form.Button content='Confirm' type='submit' />
 				</Form>
