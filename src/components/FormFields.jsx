@@ -24,7 +24,7 @@ const FormFields = props => {
 
 	return (
 		<>
-			<Container fluid textAlign='center'>
+			<Container fluid className='form-container' textAlign='center'>
 				<Form onSubmit={props.handleSubmit}>
 					<Form.Input
 						name='ssn'
