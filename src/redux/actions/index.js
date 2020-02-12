@@ -1,4 +1,4 @@
-import { COUNTRIES_LOADED } from '../constants'
+import { COUNTRIES_LOADED, CONFIRM_USER } from '../constants'
 import axios from 'axios'
 
 export const getCountries = () => {
@@ -10,4 +10,8 @@ export const getCountries = () => {
       return dispatch({type: 'COUNTRY_ERROR'})
     }
   }
+}
+
+export const confirmUser = payload => {
+  return { type: CONFIRM_USER, payload}
 }
