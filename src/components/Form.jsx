@@ -51,13 +51,11 @@ class Form extends Component {
     localStorage.setItem('user', JSON.stringify(nextState))
   }
 
+  validSsn = RegExp(/^(19|20)?\d{2}((0[1-9])|(1[012]))(([012][1-9])|(3[01]))-\d{4}$/)
+
+  validPhone = RegExp(/^([+]46)\s*(7[0236])\s*(\d{4})\s*(\d{3})$/)
+
   validEmail = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
-
-  ssnRegex = /^(19|20)?\d{2}((0[1-9])|(1[012]))(([012][1-9])|(3[01]))-\d{4}$/
-  validSsn = ssn => this.ssnRegex.test(ssn)
-
-  phoneRegex = /^([+]46)\s*(7[0236])\s*(\d{4})\s*(\d{3})$/
-  validPhone = phone => this.phoneRegex.test(phone)
 
   handleChange = (e) => {
     e.preventDefault()
@@ -67,13 +65,13 @@ class Form extends Component {
     switch (name) {
       case 'ssn':
         errors.ssn = 
-          this.validSsn(value)
+          this.validSsn.test(value)
             ? ''
             : 'Please enter a valid personal number!'
         break
       case 'phone':
         errors.phone =
-          this.validPhone(value)
+          this.validPhone.test(value)
             ? ''
             : 'Please enter a valid phone number!'
         break
@@ -117,6 +115,7 @@ class Form extends Component {
         errorMessage: 'Please make sure that all fields contain valid information.'
       })
       console.log('Oops, something went wrong!')
+      this.timer()
     }
   }
 
@@ -128,8 +127,18 @@ class Form extends Component {
       email: '',
       country: 'Afghanistan'
     })
+    this.timer()
     localStorage.clear()
     console.log('Success')
+  }
+
+  timer = () => {
+    setTimeout(() => {
+      this.setState({
+        errorMessage: null,
+        successMessage: null
+      })
+    }, 3000)
   }
 
   render() {
